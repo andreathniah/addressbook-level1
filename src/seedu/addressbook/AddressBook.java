@@ -35,6 +35,7 @@ import java.util.Set;
  * in a text file.
  **/
 public class AddressBook {
+    public static boolean firstEntry = true;
 
     /**
      * Default file path used if the user doesn't provide the file name.
@@ -207,7 +208,13 @@ public class AddressBook {
      */
 
     public static void main(String[] args) {
+
         showWelcomeMessage();
+        if (AddressBook.firstEntry == true) {
+            AddressBook.firstEntry = false;
+            showToUser(getUsageInfoForAllCommands(), DIVIDER);
+        }
+
         processProgramArgs(args);
         loadDataFromStorage();
         while (true) {
